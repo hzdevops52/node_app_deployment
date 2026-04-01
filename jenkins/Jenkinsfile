@@ -1,0 +1,30 @@
+pipeline{
+    agent any
+
+    stages{
+        stage('git clone'){
+            steps{
+                git branch: 'main', url:'https://github.com/hzdevops52/node_app_deployment.git'
+            }
+        }
+
+        stage('Debug') {
+    steps {
+        sh 'pwd'
+        sh 'ls -la'
+    }
+}
+
+        stage('build image'){
+            steps{
+                sh "docker build -t node_app ."
+            }
+        }
+
+        stage('apply yaml files'){
+            steps{
+                sh "kubectl apply -f k8s/"
+            }
+        }
+    }
+}
