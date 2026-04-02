@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: nodeapp:latest
-        imagePullPolicy: Never # IMPORTANT for Minikube
+        image: hzdevops52/node_app:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3001
